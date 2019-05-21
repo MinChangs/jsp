@@ -16,7 +16,7 @@ public class BasicDate extends HttpServlet{
 			throws ServletException, IOException {
 		PrintWriter pw =resp.getWriter();
 		pw.write(new Date().toString());
-		//
+		
 	}
 	
 }

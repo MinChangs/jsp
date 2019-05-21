@@ -40,7 +40,7 @@ public class BasicGugudan extends HttpServlet {
 		pw.write("	</body>");
 		pw.write("</html>");
 		pw.close();
-		//
+		
 	}
 
 }

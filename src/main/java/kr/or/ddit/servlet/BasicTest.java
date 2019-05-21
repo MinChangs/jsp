@@ -25,7 +25,7 @@ public class BasicTest extends HttpServlet {
 		PrintWriter pw =resp.getWriter();
 		pw.write(format_time1);
 		pw.close();
-		//
+		
 	}
 
 }
