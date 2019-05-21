@@ -8,7 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 public class BasicGugudan extends HttpServlet {
+	
+	//kr.or.ddit.servle.BasicGugudan
+	private Logger logger = LoggerFactory.getLogger(BasicGugudan.class);
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -16,9 +24,14 @@ public class BasicGugudan extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		// localhost/jsp//timeServlet?param=6
 		String param = req.getParameter("i");
+//		System.out.println("param : " +param);
+		// trace / debug/ info /warn .error
+		logger.debug("param : {}",param);
+		
+		
 		String param2 = req.getParameter("j");
-		System.out.println("param : " +param);
-		System.out.println("param2 : " +param2);
+//		System.out.println("param2 : " +param2);
+		logger.debug("param2 : {}",param2);
 		
 		pw.write("<html>");
 		pw.write("	<head>");
