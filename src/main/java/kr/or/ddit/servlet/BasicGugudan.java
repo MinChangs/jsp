@@ -24,13 +24,11 @@ public class BasicGugudan extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		// localhost/jsp//timeServlet?param=6
 		String param = req.getParameter("i");
-//		System.out.println("param : " +param);
 		// trace / debug/ info /warn .error
 		logger.debug("param : {}",param);
 		
 		
 		String param2 = req.getParameter("j");
-//		System.out.println("param2 : " +param2);
 		logger.debug("param2 : {}",param2);
 		
 		pw.write("<html>");
