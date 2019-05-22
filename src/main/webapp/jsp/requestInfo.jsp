@@ -28,7 +28,9 @@
 		request.getRequestURI() <%=request.getRequestURI() %><br>
 		request.getProtocol() <%=request.getProtocol() %><br>
 		
-		<img src="/jsp/img/brown.png">
+		<img src="/jsp/img/brown.png"><br>
+		<%--파라미터 받기 --%>
+		request.getParameter("rangersName") : <%=request.getParameter("rangersName") %><br>
 
 </body>
 </html>
