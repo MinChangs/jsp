@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <% System.out.println("userId(requestDispatchTarget.jsp) : "
 			+	request.getParameter("userId"));%>
 			
