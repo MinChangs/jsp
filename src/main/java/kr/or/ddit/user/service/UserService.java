@@ -3,9 +3,20 @@ package kr.or.ddit.user.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.or.ddit.user.dao.IUserDao;
+import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.UserVo;
 
 public class UserService implements IUserService{
+	
+	IUserDao dao = new UserDao();
+	
+	
+
+	public UserService() {
+		dao = new UserDao();
+	}
+
 
 	/**
 	 * 
@@ -19,13 +30,25 @@ public class UserService implements IUserService{
 	public List<UserVo> userList() {
 		//controller -> service -> dao
 		//db에서 데이터를 조회했다고 가정
-
-		List<UserVo> userList = new ArrayList<UserVo>();
-		userList.add(new UserVo("브라운","brown","곰"));
-		userList.add(new UserVo("코니","cony","토끼"));
-		userList.add(new UserVo("샐리","sally","샐리"));
-		userList.add(new UserVo("제임스","james","..."));
-		userList.add(new UserVo("문","moon","달"));
-		return userList;
+		
+		return dao.userList();
 	}
+
+	
+	/**
+	* Method : getUser
+	* 작성자 : PC24
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 정보
+	*/
+	@Override
+	public UserVo getUser(String userId) {
+		
+		return dao.getUser(userId);
+	}
+	
+	
+	
 }

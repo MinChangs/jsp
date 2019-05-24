@@ -3,7 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-  <select id="userList" resultType="userVo">
-    select * from users 
-  </select>
+	<select id="userList" resultType="userVo">
+		select * from users order by userid
+	</select>
+
+	<select id="getUser" resultType="userVo" parameterType="String">
+		SELECT * FROM USERS WHERE USERID= #{userid}
+	</select>
 </mapper>

@@ -13,14 +13,22 @@ public class UserDao implements IUserDao {
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserDao.class);
 	public static void main(String[] args) {
+		
+		
 		/***Given***/
 		IUserDao userDao = new UserDao();
 
 		/***When***/
-		List<UserVo> useList= userDao.userList();
+		List<UserVo> userList= userDao.userList();
+		UserVo vo = userDao.getUser("brown");
 
 		/***Then***/
-		logger.debug("userList : {}", useList);
+		logger.debug("userList : {}", userList);
+		logger.debug("getUser : {}", vo);
+		
+		
+
+		
 	}
 
 	/**
@@ -36,6 +44,24 @@ public class UserDao implements IUserDao {
 		SqlSession sqlSession =MyBatisUtil.getSqlSession();
 		List<UserVo> userList= sqlSession.selectList("user.userList");
 		return userList;
+	}
+	
+	/**
+	 * 
+	* Method : getUser
+	* 작성자 : PC24
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 정보 조회
+	 */
+	
+
+	@Override
+	public UserVo getUser(String userId) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSession();
+		UserVo vo = sqlSession.selectOne("user.getUser",userId);
+		return vo;
 	}
 
 }
