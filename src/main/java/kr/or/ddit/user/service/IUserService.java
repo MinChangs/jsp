@@ -1,7 +1,9 @@
 package kr.or.ddit.user.service;
 
 import java.util.List;
+import java.util.Map;
 
+import kr.or.ddit.paging.model.PageVo;
 import kr.or.ddit.user.model.UserVo;
 
 public interface IUserService {
@@ -25,4 +27,9 @@ public interface IUserService {
 	* Method 설명 : 사용자 정보
 	 */
 	UserVo getUser(String userId);
+
+	Map<String, Object> userPagingList(PageVo pageVo);
+	
+	
+
 }

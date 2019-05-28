@@ -3,11 +3,73 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
+
+	 
+	 
+	<!-- 전체 사용자 리스트 조회 -->
 	<select id="userList" resultType="userVo">
 		select * from users order by userid
 	</select>
-
+	
+	<!-- 특정 사용자 조회 -->
 	<select id="getUser" resultType="userVo" parameterType="String">
 		SELECT * FROM USERS WHERE USERID= #{userid}
 	</select>
+	
+	<!--
+	 xml에서 사용못하는 문자열 세가지
+		< >	&
+		html코드로  &gt; &lt;를 
+	 -->
+	
+	<!-- 사용자 페이지 리스트 조회 -->
+	<!-- HTML코드 방식 -->
+	<!-- 
+	<select id="userPagingLsit">
+		SELECT * FROM
+		(SELECT a.*, rownum rn
+		FROM
+		(SELECT a.* 
+		FROM users a 
+		ORDER by a.USERID) a)
+		where rn &gt;= 1 and rn &lt;= 10
+	</select>
+	 -->
+	
+	<!-- 사용자 페이지 리스트 조회 -->
+	<!-- CDATA방식 -->
+	<!-- pageVo int page, int pageSize -->
+	<select id="userPagingList" parameterType="pageVo" resultType="userVo">
+	<![CDATA[
+		SELECT * FROM
+		(SELECT a.*, rownum rn
+		FROM
+		(SELECT a.* 
+		FROM users a 
+		ORDER by a.USERID) a)
+		where rn>=(#{page}-1)*#{pageSize}+1  and rn<= (#{page}*#{pageSize})
+	]]>
+	</select>
+	
+	<!-- 사용자 전체수 조회 -->
+	<select id="usersCnt" resultType="int">
+		SELECT COUNT(*) FROM USERS
+	</select>
+	
+	
+	
+	
+	
+	<select id="lprodPagingList" resultType="lprodVo" parameterType="pageVo">
+		<![CDATA[
+		SELECT * FROM
+		(SELECT a.*, rownum rn
+		FROM
+		(SELECT a.* 
+		FROM LPROD a 
+		ORDER by a.lprod_id) a)
+		where rn>=(#{page}-1)*#{pageSize}+1  and rn<= (#{page}*#{pageSize})
+	]]>
+	</select>
+	
 </mapper>
