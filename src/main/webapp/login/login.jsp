@@ -39,16 +39,16 @@
     		$("#signinBtn").on("click", function() {
     			//사용자 아이디 값을 userId 쿠키로 저장
     			//true값을 rememberme cookie값으로 저장
-    			if($("#rememberme").is(":checked")){
-    				Cookies.set("userId", $("#userId").val(), {expires : 30});
-    				Cookies.set("rememberme", "true", {expires : 30})
-    			}else{
+//     			if($("#rememberme").is(":checked")){
+//     				Cookies.set("userId", $("#userId").val(), {expires : 30});
+//     				Cookies.set("rememberme", "true", {expires : 30})
+//     			}else{
     				
-	    			//만약에 rememberme 체크박스가 해제되어 있는 경우
-	    			Cookies.remove("userId");
-	    			// userId, rememberme cookie값을 삭제
-	    			Cookies.remove("rememberme");
-    			}
+// 	    			//만약에 rememberme 체크박스가 해제되어 있는 경우
+// 	    			Cookies.remove("userId");
+// 	    			// userId, rememberme cookie값을 삭제
+// 	    			Cookies.remove("rememberme");
+//     			}
     			
     			//로그인 요청을 서버로 전송
     			$("#frm").submit();
@@ -106,7 +106,7 @@
         <input type="password" id="password" class="form-control" placeholder="Password" required name="password" value="brown1234">
         <div class="checkbox">
           <label>
-            <input id ="rememberme" type="checkbox" value="remember-me"> Remember me
+            <input id ="rememberme" name ="rememberme" type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
         <button id="signinBtn" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
