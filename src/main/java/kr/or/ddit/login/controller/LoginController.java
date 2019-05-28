@@ -111,7 +111,6 @@ public class LoginController extends HttpServlet {
 			
 			response.addCookie(userIdCookie);
 			response.addCookie(rememberMeCookie);
-		
 				
 			
 			
