@@ -126,7 +126,10 @@ public class LoginController extends HttpServlet {
 			//-->다시 doPost 처음부터 돌아와서 실행
 			//requst.getMethod(); //GET, POST
 			//
-			response.sendRedirect(request.getContextPath()+"/login");
+			
+			request.getRequestDispatcher("/login/login.jsp").forward(request, response);;
+			
+//			response.sendRedirect(request.getContextPath()+"/login");
 			
 		}
 		

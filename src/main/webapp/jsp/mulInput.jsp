@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<%=request.getContextPath() %>/jsp/mulCalculation" method="post">
+<form action="${pageContext.request.contextPath}/jsp/mulCalculation" method="post">
 <input type="text" name="param1"><br>
 <input type="text" name="param2"><br>
 <input type="submit" value="전송">
