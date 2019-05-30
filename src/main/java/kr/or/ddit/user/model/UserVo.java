@@ -4,7 +4,7 @@ public class UserVo {
 	private String name;
 	private String userId;
 	private String alias;
-		
+	private String pass;
 	public UserVo(String name, String userId, String alias) {
 		this.name = name;
 		this.userId = userId;
@@ -14,6 +14,15 @@ public class UserVo {
 	public UserVo(){
 		
 	}
+		
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	
 	
 	public String getName() {

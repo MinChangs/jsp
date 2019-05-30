@@ -54,8 +54,7 @@ public class PagingController extends HttpServlet {
 		request.setAttribute("pageVo", pageVo);
 
 		// 화면 출력을 담당하는 jsp에게 역할 위임
-		request.getRequestDispatcher("/user/userPagingList.jsp").forward(
-				request, response);
+		request.getRequestDispatcher("/user/userPagingList.jsp").forward(request, response);
 	}
 
 }
