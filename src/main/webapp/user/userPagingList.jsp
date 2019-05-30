@@ -18,8 +18,30 @@
 
 <title>사용자 페이징 리스트</title>
 
+<style>
+	.userTr:hover{
+		cursor: pointer;
+	}
+</style>
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp"%>
+<script>
+$(document).ready(function() {
+	$(".userTr").on("click", function() {
+		console.log("userTr click")
+		//userId를 획득하는 방법
+		
+		//사용자 아이디를 %$serId 값으로 설정해주고
+		
+		var userId = $(this).find(".userId").text();
+		
+		$('#userId').val(userId);
+		//#frm을 이용하여 submit();
+		$("#frm").submit();
+	});	
+	
+});
+</script>
 </head>
 
 <body>
@@ -35,6 +57,11 @@
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자</h2>
+						<!-- 사용자 상세조회 : userId가 필요 -->
+						<form id= "frm" action="${pageContext.request.contextPath}/user" method="get">
+							<input type="hidden" id="userId" name ="userId">
+						</form>
+						
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tr>
@@ -45,8 +72,8 @@
 								</tr>
 
 								<c:forEach items="${userList}" var="userpage" varStatus="status">
-									<tr>
-										<td>${userpage.userId}</td>
+									<tr class="userTr" data-userId = "${userpage.userId}">
+										<td class = "userId">${userpage.userId}</td>
 										<td>${userpage.name}</td>
 										<td>${userpage.alias}</td>
 										<td></td>
@@ -54,6 +81,8 @@
 								</c:forEach>
 							</table>
 						</div>
+						
+						
 
 						<a class="btn btn-default pull-right">사용자 등록</a>
 
