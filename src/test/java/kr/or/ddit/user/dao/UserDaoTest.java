@@ -1,16 +1,14 @@
 package kr.or.ddit.user.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import kr.or.ddit.mybatis.MyBatisUtil;
 import kr.or.ddit.paging.model.PageVo;
 import kr.or.ddit.user.model.LprodVo;
 import kr.or.ddit.user.model.UserVo;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.tomcat.util.buf.UEncoder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

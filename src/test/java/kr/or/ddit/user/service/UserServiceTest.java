@@ -1,17 +1,16 @@
 package kr.or.ddit.user.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.paging.model.PageVo;
-import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.UserVo;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
