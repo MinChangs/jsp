@@ -29,7 +29,7 @@ public class UserController extends HttpServlet {
 		//조회 결과를 request객체에 속성으로 저장
 		request.setAttribute("userInfo", userVo);
 		//화면을 담당하는 /user/user.jsp로 foward
-		request.getRequestDispatcher("/user/user.jsp").forward(request, response);;
+		request.getRequestDispatcher("/user/user.jsp").forward(request, response);
 		
 	}
 

@@ -46,6 +46,7 @@ $(document).ready(function() {
 		//유효성 체크(지금은 생략)
 		
 		//여기까지 도달하면 검사 완료(submit)
+		$('#userId').val('${userInfo.userId}');
 		$('#frm').submit();
 	});
 	
@@ -54,7 +55,7 @@ $(document).ready(function() {
 });
 
 function dataInit() {
-	$('#userId').val("userTest");
+	$('#userId').val();
 	$('#name').val("대덕인");
 	$('#alias').val("중앙로");
 	$('#addr1').val("대전광역시 중구 중앙로76");
@@ -82,7 +83,7 @@ function dataInit() {
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 등록</h2>
-						<form id ="frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userForm" method="post">
+						<form id ="frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify" method="post">
 
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
@@ -94,28 +95,30 @@ function dataInit() {
 							<div class="form-group">
 								<label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="userId" name="userId" placeholder="사용자 아이디" value="${param.userId}">
+								
+									<input type="hidden" class="form-control" id="userId" name="userId" placeholder="사용자 아이디"  >
+										<label class="control-label"> ${userInfo.userId}</label> 
 								</div>
 							</div>
 		
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">사용자 이름</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름" value="${param.name}">
+									<input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름" value="${userInfo.name}">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="alias" class="col-sm-2 control-label">별명</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="alias" name="alias" placeholder="사용자 별명" value="${param.alias}">
+									<input type="text" class="form-control" id="alias" name="alias" placeholder="사용자 별명" value="${userInfo.alias}">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="addr1" class="col-sm-2 control-label">주소</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" id="addr1" name="addr1" placeholder="주소" readonly value="${param.addr1}">
+									<input type="text" class="form-control" id="addr1" name="addr1" placeholder="주소" readonly value="${userInfo.addr1}">
 								</div>
 								<div class="col-sm-2">
 									<button id="addrSearchBtn" type="button" class="btn btn-default pull-right">주소 검색</button>
@@ -125,28 +128,28 @@ function dataInit() {
 							<div class="form-group">
 								<label for="addr2" class="col-sm-2 control-label">상세주소</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="${param.addr2}">
+									<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="${userInfo.addr2}">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="zipcd" class="col-sm-2 control-label">우편번호</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="zipcd" name="zipcd" placeholder="우편번호" readonly value="${param.zipcd}">
+									<input type="text" class="form-control" id="zipcd" name="zipcd" placeholder="우편번호" readonly value="${userInfo.zipcd}">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="birth" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
-									<input type="date" class="form-control" id="birth" name="birth" placeholder="생일" value="${param.birth}">
+									<input type="date" class="form-control" id="birth" name="birth" placeholder="생일" value="${userInfo.birthstr}">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호" value="${param.pass}">
+									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호" value="${userInfo.pass}">
 								</div>
 							</div>
 							
@@ -154,7 +157,7 @@ function dataInit() {
 		
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<button id="userRegBtn" type="button" class="btn btn-default">사용자 등록</button>
+									<button id="userRegBtn" type="button" class="btn btn-default">사용자 수정</button>
 								</div>
 							</div>
 						</form>	
@@ -167,48 +170,3 @@ function dataInit() {
 </body>
 </html>
 
-
-
-
-
-
-<%-- 
-
-
-<% 
-								PageVo pageVo= (PageVo)request.getAttribute("pageVo");
-								int paginationSize = (Integer)request.getAttribute("paginationSize");
-								if(pageVo.getPage()==1){%>
-									
-								<li class="prev disabled"><span>«</span></li>
-								<% }else{%>
-								<li class="prev"><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%= pageVo.getPageSize()%>">«</a></li>
-								<%	
-								}
-								
-								
-								
-								//내가 현재 몇번째 페이지에 있는가?
-// 								PageVo pageVo= (PageVo)request.getAttribute("pageVo");
-								for(int i=1; i<=paginationSize; i++){
-									if(i == pageVo.getPage()){
-									%>
-										<li class="active"><span><%=i %></span></li>
-									<% }else{%>
-										
-									<li><a href="${pageContext.request.contextPath}/userPagingList?page=<%=i %>&pageSize=<%= pageVo.getPageSize()%>"><%=i%></a></li>
-		
-									<% }
-								}
-								
-								if(pageVo.getPage()==paginationSize){%>
-								
-								<li class="next disabled"><span>»</span></li>
-								<% }else{%>
-								<li class="next"><a href="${pageContext.request.contextPath}/userPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%= pageVo.getPageSize()%>">»</a></li>
-								<%	
-								}
-								
-							%>
-							
---%>

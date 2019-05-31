@@ -37,8 +37,8 @@
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 상세</h2>
-						<form class="form-horizontal" role="form">
-
+						<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/userModify" method="get">
+							<input type="hidden" name="userId" value="${userInfo.userId}">
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
@@ -49,7 +49,7 @@
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 								<div class="col-sm-10">
-									<label class="control-label">${userInfo.userId}</label>
+									<label  class="control-label">${userInfo.userId}</label>
 <!-- 									<input type="text" class="form-control" id="userId" name="userId" placeholder="사용자 아이디"> -->
 								</div>
 							</div>
@@ -92,7 +92,7 @@
 								<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
-									<label class="control-label">${userInfo.birth}</label>
+									<label class="control-label">${userInfo.birthstr}</label>
 								</div>
 							</div>
 							

@@ -72,4 +72,31 @@
 	]]>
 	</select>
 	
+	<insert id="insertUser" parameterType="userVo">
+	
+	INSERT INTO USERS 
+	VALUES(#{userId},#{name},#{alias},#{pass},#{addr1},#{addr2},#{zipcd},#{birth},'','')
+	
+	</insert>
+	
+	
+	<!-- 사용자 삭제 -->
+	
+	<delete id="deleteUser" parameterType="string">
+		DELETE USERS WHERE 
+		userId= #{userId}
+	</delete>
+	
+	<update id="updateUser" parameterType="userVo">
+		update users set
+		NAME =#{name}
+		,ALIAS =#{alias}
+		,PASS =#{pass}
+		,ADDR1 =#{addr1}
+		,ADDR2 =#{addr2}
+		,ZIPCD =#{zipcd}
+		,BIRTH =#{birth}
+		where userid=#{userId}
+	</update>
+	
 </mapper>
