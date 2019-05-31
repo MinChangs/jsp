@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,19 +42,16 @@
 									<th>상품 아이디</th>
 									<th>상품 이름</th>
 								</tr>
-								<%
-									List<LprodVo> lprodList= (List<LprodVo>)request.getAttribute("lprodList");
-									for(int i=0; i<lprodList.size(); i++){
-										out.write("<tr>");
-										out.write("<td>"+lprodList.get(i).getLprod_id()+"</td>");
-										out.write("<td>"+lprodList.get(i).getLprod_gu()+"</td>");
-										out.write("<td>"+lprodList.get(i).getLprod_nm()+"</td>");
-										out.write("</tr>");
-										
-									}
-								%>
+								
+								<c:forEach items="${lprodList}" var="list">
+									<tr>
+										<td>${list.lprod_id}</td>
+										<td>${list.lprod_gu}</td>
+										<td>${list.lprod_nm}</td>
+									</tr>
+								
+								</c:forEach>
 				
-
 							</table>
 						</div>
 
@@ -63,39 +61,43 @@
 						 	  페이지네이션 : 11건 -->
 						<div class="text-center">
 							<ul class="pagination">
-							<% 
-								PageVo pageVo= (PageVo)request.getAttribute("LpageVo");
-								int paginationSize = (Integer)request.getAttribute("LpaginationSize");
-								if(pageVo.getPage()==1){%>
-									
-								<li class="prev disabled"><span>«</span></li>
-								<% }else{%>
-								<li class="prev"><a href="<%=request.getContextPath()%>/lprodPagingList?page=<%=pageVo.getPage()-1 %>&pageSize=<%= pageVo.getPageSize()%>">«</a></li>
-								<%	
-								}
-								
-								//내가 현재 몇번째 페이지에 있는가?
-// 								PageVo pageVo= (PageVo)request.getAttribute("pageVo");
-								for(int i=1; i<=paginationSize; i++){
-									if(i == pageVo.getPage()){
-									%>
-										<li class="active"><span><%=i %></span></li>
-									<% }else{%>
+							
+							
+							
+							
+							<c:choose>
+								<c:when test="${LpageVo.page == 1 }">
+									<li class="prev disabled"><span>«</span></li>
+								</c:when>
+								<c:otherwise>
+									<li class="prev"><a href="${pageContext.request.contextPath}/lprodPagingList?page=${LpageVo.page-1}&pageSize=${LpageVo.pageSize}">«</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:forEach begin="1" end="${LpaginationSize}" var="i">
+								<c:choose>
+									<c:when test="${LpageVo.page == i}">
+										<li class="active"><span>${i}</span></li>
+									</c:when>
+									<c:otherwise>
+									<li><a href="${pageContext.request.contextPath}/lprodPagingList?page=${i}&pageSize=${LpageVo.pageSize}">${i}</a></li>
 										
-									<li><a href="<%=request.getContextPath()%>/lprodPagingList?page=<%=i %>&pageSize=<%= pageVo.getPageSize()%>"><%=i%></a></li>
-		
-									<% }
-								}
-								
-								if(pageVo.getPage()==paginationSize){%>
-								
-								<li class="next disabled"><span>»</span></li>
-								<% }else{%>
-								<li class="next"><a href="<%=request.getContextPath()%>/lprodPagingList?page=<%=pageVo.getPage()+1 %>&pageSize=<%= pageVo.getPageSize()%>">»</a></li>
-								<%	
-								}
-								
-							%>
+									</c:otherwise>
+								</c:choose>
+							
+							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${LpageVo.pageSize == LpaginationSize}">
+									<li class="next disabled"><span>»</span></li>
+								</c:when>
+								<c:otherwise>
+									<li class="next"><a href="${pageContext.request.contextPath}/lprodPagingList?page=${LpageVo.page+1}&pageSize=${LpageVo.pageSize}">»</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+	
+					
 							</ul>
 						</div>
 					</div>
