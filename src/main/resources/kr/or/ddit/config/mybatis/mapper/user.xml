@@ -75,7 +75,7 @@
 	<insert id="insertUser" parameterType="userVo">
 	
 	INSERT INTO USERS 
-	VALUES(#{userId},#{name},#{alias},#{pass},#{addr1},#{addr2},#{zipcd},#{birth},'','')
+	VALUES(#{userId},#{name},#{alias},#{pass},#{addr1},#{addr2},#{zipcd},#{birth},#{path, jdbcType=VARCHAR},#{filename =  jdbcType=VARCHAR})
 	
 	</insert>
 	
@@ -96,6 +96,10 @@
 		,ADDR2 =#{addr2}
 		,ZIPCD =#{zipcd}
 		,BIRTH =#{birth}
+		<if test="path != null">
+		,PATH= #{path}
+		,FILENAME= #{filename}
+		</if>
 		where userid=#{userId}
 	</update>
 	

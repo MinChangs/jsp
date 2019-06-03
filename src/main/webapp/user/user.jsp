@@ -22,7 +22,13 @@
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp"%>
 
-<script></script>
+<script>
+$(document).ready(function() {
+	var msg = '${msg}';
+	if(msg !='')
+		alert(msg);
+});
+</script>
 </head>
 
 <body>

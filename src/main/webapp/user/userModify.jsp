@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,12 +84,13 @@ function dataInit() {
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 등록</h2>
-						<form id ="frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify" method="post">
+						<form id ="frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="userId" value="${userInfo.userId}">
 
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
-									<input type="file" name="filename" id="filename">
+									<input type="file" name="profile" id="profile">
 								</div>
 							</div>
 							
@@ -142,7 +144,7 @@ function dataInit() {
 							<div class="form-group">
 								<label for="birth" class="col-sm-2 control-label">생일</label>
 								<div class="col-sm-10">
-									<input type="date" class="form-control" id="birth" name="birth" placeholder="생일" value="<fmt:formatDate value="${userInfo.birth}" pattern="yyyy-MM-dd"/>">
+									<input type="date" class="form-control" id="birth" name="birth" placeholder="생일" value='<fmt:formatDate value="${userInfo.birth}" pattern="yyyy-MM-dd"/>'>
 								</div>
 							</div>
 							
