@@ -16,7 +16,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>사용자 페이징 리스트</title>
+<title>LPROD 리스트</title>
 
 <!-- css, js -->
 <%@include file="/common/basicLib.jsp" %>
