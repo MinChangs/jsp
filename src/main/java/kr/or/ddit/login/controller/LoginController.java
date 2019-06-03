@@ -58,10 +58,10 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger.debug("LoginController doGet()");
 
-		for(Cookie cookie : request.getCookies()){
-			logger.debug("cookie : {}, {}",cookie.getName(), cookie.getValue());
-		}
-		
+//		for(Cookie cookie : request.getCookies()){
+//			logger.debug("cookie : {}, {}",cookie.getName(), cookie.getValue());
+//		}
+//		
 		
 	
 		//login 화면을 처리해줄 누군가??에게 위임
