@@ -103,4 +103,16 @@
 		where userid=#{userId}
 	</update>
 	
+	<!-- 사용자 비밀번호 암호화 적용 대상 조회 -->
+	<select id="userListForPassEncrypt" resultType="userVo">
+		SELECT * FROM USERS 
+	    WHERE USERID NOT IN('brown', 'userTest')
+	</select>
+	
+	<!-- 사용자 비밀번호 업데이트 -->
+	<update id="updateUserEncryptPass" parameterType="userVo">
+		UPDATE USERS SET PASS= #{pass}
+		WHERE USERID =#{userId}	
+	</update>
+	
 </mapper>

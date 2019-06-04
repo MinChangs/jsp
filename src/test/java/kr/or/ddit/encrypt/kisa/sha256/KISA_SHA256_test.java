@@ -18,14 +18,14 @@ public class KISA_SHA256_test {
 	@Test
 	public void sha256test() {
 		/***Given***/
-		String plainText ="brown1234";
+		String plainText ="user11234";
 
 		/***When***/
 		String encryptText = KISA_SHA256.encrypt(plainText);
 
 		/***Then***/
 		logger.debug("encryptText :{}", encryptText);
-		assertEquals("c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44", encryptText);
+		assertEquals("43eef66d6be801b6eddcf78f6768e4d59da3ddf152debdd9f8ca24821d23bc", encryptText);
 	}
 
 }
