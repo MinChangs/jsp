@@ -30,7 +30,7 @@
 <%@include file="/common/left.jsp" %>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+				
 
 				<div class="blog-header">
 					<h1 class="blog-title">Main</h1>
@@ -44,7 +44,6 @@
 						<div class="blog-post">
 							<h2 class="blog-post-title">JSP</h2>
 							<p class="blog-post-meta">2017.10.30, room 201</p>
-
 							<p>jsp를 통한 웹 프로그래밍 학습</p>
 							<hr>
 

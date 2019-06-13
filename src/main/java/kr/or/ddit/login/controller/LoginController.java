@@ -144,7 +144,7 @@ public class LoginController extends HttpServlet {
 			//requst.getMethod(); //GET, POST
 			//
 			
-			request.getRequestDispatcher("/login/login.jsp").forward(request, response);;
+			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 			
 //			response.sendRedirect(request.getContextPath()+"/login");
 			

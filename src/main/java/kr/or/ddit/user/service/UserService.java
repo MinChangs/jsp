@@ -136,7 +136,7 @@ public class UserService implements IUserService {
 	public int encryptPassAllUser() {
 		//사용X
 		if(1==1){
-			
+			return 0;
 		}
 		//0.sql 실행에 필요한 sqlSession 객체를 생성
 		SqlSession sqlSession = MyBatisUtil.getSqlSession();
