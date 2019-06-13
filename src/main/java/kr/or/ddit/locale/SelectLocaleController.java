@@ -21,7 +21,7 @@ public class SelectLocaleController extends HttpServlet {
 		if(language==null||language.equals(""))
 			language="ko";
 		request.setAttribute("language",language);
-		request.getRequestDispatcher("/jstl/selectLocation.jsp").forward(request, response);;
+		request.getRequestDispatcher("/jstl/selectLocation.jsp").forward(request, response);
 		
 
 	}
