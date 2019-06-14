@@ -84,7 +84,7 @@ function dataInit() {
 				<div class="row">
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 등록</h2>
-						<form id ="frm" class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify" method="post" enctype="multipart/form-data">
+						<form id ="frm" class="form-horizontal" role="form" action="${cp }/userModify" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="userId" value="${userInfo.userId}">
 
 							<div class="form-group">
@@ -151,7 +151,7 @@ function dataInit() {
 							<div class="form-group">
 								<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호" value="${userInfo.pass}">
+									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호">
 								</div>
 							</div>
 							

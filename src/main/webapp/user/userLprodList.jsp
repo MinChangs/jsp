@@ -70,7 +70,7 @@
 									<li class="prev disabled"><span>«</span></li>
 								</c:when>
 								<c:otherwise>
-									<li class="prev"><a href="${pageContext.request.contextPath}/lprodPagingList?page=${LpageVo.page-1}&pageSize=${LpageVo.pageSize}">«</a></li>
+									<li class="prev"><a href="${cp}/lprodPagingList?page=${LpageVo.page-1}&pageSize=${LpageVo.pageSize}">«</a></li>
 								</c:otherwise>
 							</c:choose>
 							
@@ -80,7 +80,7 @@
 										<li class="active"><span>${i}</span></li>
 									</c:when>
 									<c:otherwise>
-									<li><a href="${pageContext.request.contextPath}/lprodPagingList?page=${i}&pageSize=${LpageVo.pageSize}">${i}</a></li>
+									<li><a href="${cp}/lprodPagingList?page=${i}&pageSize=${LpageVo.pageSize}">${i}</a></li>
 										
 									</c:otherwise>
 								</c:choose>
@@ -92,7 +92,7 @@
 									<li class="next disabled"><span>»</span></li>
 								</c:when>
 								<c:otherwise>
-									<li class="next"><a href="${pageContext.request.contextPath}/lprodPagingList?page=${LpageVo.page+1}&pageSize=${LpageVo.pageSize}">»</a></li>
+									<li class="next"><a href="${cp}/lprodPagingList?page=${LpageVo.page+1}&pageSize=${LpageVo.pageSize}">»</a></li>
 								</c:otherwise>
 							</c:choose>
 							

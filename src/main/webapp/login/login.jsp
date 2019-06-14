@@ -15,13 +15,13 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${cp}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+    <link href="${cp}/css/signin.css" rel="stylesheet">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/js.cookie.js"></script>
+    <script src="${cp}/js/js.cookie.js"></script>
     <script>
     	$(document).ready(function() {
     		//문서로딩이 완려되고나서 실행되는 부분
@@ -95,10 +95,10 @@
   <body>
 
     <div class="container">
-<%-- 												${pageContext.request.contextPath}
+<%-- 												${cp}
 <%-- 												<%=pageContext.getrequest().getcontextPath() %> --%>
-      <form id="frm"class="form-signin" action="${pageContext.request.contextPath}/login" method="post">
-        <h2 class="form-signin-heading">Please sign in ${requestMap}</h2>
+      <form id="frm"class="form-signin" action="${cp}/login" method="post">
+        <h2 class="form-signin-heading">Please sign in ${cp}</h2>
         
         <label for="userId" class="sr-only">userId</label>
         <input type="text" id="userId" class="form-control" placeholder="userId" required name="userId" value="${param.userId}">
