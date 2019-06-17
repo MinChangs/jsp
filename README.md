@@ -2,13 +2,13 @@
 ## url 테스트 (webapp 폴더 접근 url 확인)
 #### WEB-INF 외부에서 접근이 안됨
 #### localhsot/jsp/img/brown.png (O)
-#### localhsot/jsp/WEB-INF/brown.png (X)
+#### localhsot/jsp/WEB-INF/brown.png (X) <br>
 
 ##  jsp : html코드에 java 코드를 삽입하는 형태
 ####  <%! %> : 선언부
 ####  <% %> : 스크립틀릿(자바 로직 작성영역)
 ####  <%=%> 표현식(값표현)
-####  <%-- --%> jsp주석
+####  <%-- --%> jsp주석 <br>
 
 
 ## request 객체 정보 확인
@@ -29,4 +29,4 @@
 ####	- 요청이 한번 발생
 ####	- 주소줄에는 최초 요청한 주소가 표시된다
 ####	- 서버내에서 위임이 이루어지기 때문에 request, response 객체가 공유된다
-####- 요청파라미터를 공유할 수 있다.
+####  - 요청파라미터를 공유할 수 있다.
