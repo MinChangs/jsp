@@ -4,7 +4,7 @@
 #### localhsot/jsp/img/brown.png (O)
 #### localhsot/jsp/WEB-INF/brown.png (X)
 
-## * jsp : html코드에 java 코드를 삽입하는 형태
+##  jsp : html코드에 java 코드를 삽입하는 형태
 ####  <%! %> : 선언부
 ####  <% %> : 스크립틀릿(자바 로직 작성영역)
 ####  <%=%> 표현식(값표현)
@@ -18,7 +18,7 @@
 ## jsp파일 parameter받기
 ### request.getParameter("rangersName") : <%=request.getParameter("rangersName") %>
 
-##응답위임
+## 응답위임
 ### redirect 
 ####	- response.sendRedirect("path")
 ####	- 요청이 두번 발생
