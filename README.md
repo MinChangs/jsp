@@ -43,10 +43,17 @@
 
 
 ## jstl
+###	pom.xml에 	dependency를 추가한다
+### <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 
 #### c: set,     *scope역역에 속성저장 
 #### c:if,       *java if 
 #### c:choose,   *java if - else if - else 
 #### c:forEach 
 ####	 -> items, var, begin ,end, step, var, varStatus
+
+
 
