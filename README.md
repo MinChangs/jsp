@@ -2,7 +2,7 @@
 ## url 테스트 (webapp 폴더 접근 url 확인)
 #### WEB-INF 외부에서 접근이 안됨
 #### localhsot/jsp/img/brown.png (O)
-#### localhsot/jsp/WEB-INF/brown.png (X) <br>
+#### localhsot/jsp/WEB-INF/brown.png (X) <br><br><br><br><br><br>
 
 ##  jsp : html코드에 java 코드를 삽입하는 형태
 ####  <%! %> : 선언부
