@@ -10,6 +10,7 @@ package kr.or.ddit.encrypt.kisa.aria;
 import java.io.PrintStream;
 import java.security.InvalidKeyException;
 
+
 class ARIAEngine {
 
 	private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5',
