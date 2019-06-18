@@ -1,8 +1,3 @@
-﻿/**
- * 전자정부 제공 ARIAUTIL
- * ARIAUtil
- */
-//package crdf.regi.egov.security;
 package kr.or.ddit.encrypt.kisa.aria;
 
 import java.io.File;
@@ -85,7 +80,7 @@ public class ARIAUtil {
 	}
 
 	/*
-	 *Aria 복호화
+	 *Aria 蹂듯�명��
 	 */
 	public static String ariaDecrypt(String strHex, String privateKey) 
 	throws InvalidKeyException, UnsupportedEncodingException  {
@@ -158,7 +153,7 @@ public class ARIAUtil {
 
 
 	/*
-	 *Aria 기본 복호화
+	 *Aria 湲곕낯 蹂듯�명��
 	 */
 	public static String ariaDecrypt(String strHex) 
 	throws InvalidKeyException, UnsupportedEncodingException  {
@@ -185,7 +180,7 @@ public class ARIAUtil {
 		}
 	}
 	/*
-	*aria 기본 암호화
+	*aria 湲곕낯 ���명��
 	*/
 	public static String ariaEncrypt(String str) 
 	throws InvalidKeyException, UnsupportedEncodingException {
@@ -210,7 +205,7 @@ public class ARIAUtil {
 	}
 	
 	/*
-	*캐릭터셋 변경 암호화
+	*罹�由��곗�� 蹂�寃� ���명��
 	*/
 	public static String ariaCharEncrypt(String str, String charset) 
 	throws InvalidKeyException, UnsupportedEncodingException {
@@ -233,8 +228,8 @@ public class ARIAUtil {
 	}
 	
 	/*
-	*캐릭터셋 변경 암호화
-	*(서버타입설정 열람서버 : read, 등록관리서버 : regi)
+	*罹�由��곗�� 蹂�寃� ���명��
+	*(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� : regi)
 	*/
 	public static String ariaCharEncrypt(String str, String charset, String server) 
 	throws InvalidKeyException, UnsupportedEncodingException {
@@ -262,7 +257,7 @@ public class ARIAUtil {
 
 
 	/*
-	 *Aria 캐릭터셋 변경 복호화
+	 *Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��
 	 */
 	public static String ariaCharDecrypt(String strHex,  String charset) 
 	throws InvalidKeyException, UnsupportedEncodingException  {
@@ -284,8 +279,8 @@ public class ARIAUtil {
 	}
 	
 	/*
-	 *Aria 캐릭터셋 변경 복호화
-	 *(서버타입설정 열람서버 : read, 등록관리서버 : regi)
+	 *Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��
+	 *(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� : regi)
 	 */
 	public static String ariaCharDecrypt(String strHex,  String charset, String server) 
 	throws InvalidKeyException, UnsupportedEncodingException  {

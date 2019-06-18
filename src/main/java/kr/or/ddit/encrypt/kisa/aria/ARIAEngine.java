@@ -1,4 +1,3 @@
-﻿//
 //  ARIA.java
 //  
 //  A pure Java implementation of ARIA 
