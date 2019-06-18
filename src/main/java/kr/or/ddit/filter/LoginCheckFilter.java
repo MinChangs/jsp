@@ -30,7 +30,8 @@ public class LoginCheckFilter implements Filter {
 		String uri = req.getRequestURI();
 		uri= uri.substring(req.getContextPath().length());
 		//세연이 없어도 처리가 되어야 되는 것글 : /login, /js, /css, /img  (.js .css .png. gif)
-		if(uri.startsWith("/login")||uri.startsWith("/js")||uri.startsWith("/css")||uri.startsWith("/img")){
+		if(uri.startsWith("/login")||uri.startsWith("/js")||uri.startsWith("/css")||uri.startsWith("/img")
+				|| uri.startsWith("/bootstrap")){
 			chain.doFilter(request, response);
 			
 		}else if(req.getSession().getAttribute("USER_INFO")!=null){ //session을 체크해야하는 대상들
