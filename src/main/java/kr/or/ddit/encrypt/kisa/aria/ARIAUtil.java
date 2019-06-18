@@ -1,6 +1,5 @@
 package kr.or.ddit.encrypt.kisa.aria;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,14 +9,15 @@ import java.security.InvalidKeyException;
 
 public class ARIAUtil {
 
-	public static String ariaEncrypt(String str, String privateKey) 
+	public static String ariaEncrypt(String str, String privateKey)
 			throws InvalidKeyException, UnsupportedEncodingException {
-		if (str==null || str.equals("")) return "";
+		if (str == null || str.equals(""))
+			return "";
 
 		byte[] p;
 		byte[] c;
 		ARIAEngine instance = new ARIAEngine(256, privateKey);
-		p = new byte[str.getBytes().length]; 
+		p = new byte[str.getBytes().length];
 		p = str.getBytes();
 
 		int len = str.getBytes().length;
@@ -39,25 +39,27 @@ public class ARIAUtil {
 	 * @throws InvalidKeyException
 	 * @throws UnsupportedEncodingException
 	 */
-	public static void ariaFileEncrypt(String privateKey, String src, String dest) 
-	throws IOException, InvalidKeyException, UnsupportedEncodingException {
-		File f = new File(src); 
+	public static void ariaFileEncrypt(String privateKey, String src,
+			String dest) throws IOException, InvalidKeyException,
+			UnsupportedEncodingException {
+		File f = new File(src);
 		FileInputStream fis = new FileInputStream(src);
 
 		long length = f.length();
-		byte[] b = new byte[(int)length];
+		byte[] b = new byte[(int) length];
 
 		try {
 			int offset = 0;
 			int numRead = 0;
-			while (offset < b.length && (numRead=fis.read(b, offset, b.length-offset)) >= 0) {
+			while (offset < b.length
+					&& (numRead = fis.read(b, offset, b.length - offset)) >= 0) {
 				offset += numRead;
 			}
 			if (offset < b.length) {
 				throw new IOException(f.getName());
 			}
-		} finally{
-			fis.close(); 
+		} finally {
+			fis.close();
 		}
 
 		ARIAEngine instance = new ARIAEngine(256, privateKey);
@@ -76,16 +78,18 @@ public class ARIAUtil {
 		} finally {
 			try {
 				fos.close();
-			} catch (IOException e) {}
+			} catch (IOException e) {
+			}
 		}
 	}
 
 	/*
-	 *Aria 蹂듯�명��
+	 * Aria 蹂듯�명��
 	 */
-	public static String ariaDecrypt(String strHex, String privateKey) 
-	throws InvalidKeyException, UnsupportedEncodingException  {
-		if (strHex==null || strHex.equals("")) return "";
+	public static String ariaDecrypt(String strHex, String privateKey)
+			throws InvalidKeyException, UnsupportedEncodingException {
+		if (strHex == null || strHex.equals(""))
+			return "";
 
 		byte[] p;
 		byte[] c;
@@ -101,26 +105,27 @@ public class ARIAUtil {
 		return buf.toString().trim();
 	}
 
-
-	public static void ariaFileDecrypt(String privateKey, String src, String dest) 
-	throws IOException, InvalidKeyException, UnsupportedEncodingException {
-		File f = new File(src); 
+	public static void ariaFileDecrypt(String privateKey, String src,
+			String dest) throws IOException, InvalidKeyException,
+			UnsupportedEncodingException {
+		File f = new File(src);
 		FileInputStream fis = new FileInputStream(src);
 
 		long length = f.length();
-		byte[] b = new byte[(int)length];
+		byte[] b = new byte[(int) length];
 
 		try {
 			int offset = 0;
 			int numRead = 0;
-			while (offset < b.length && (numRead=fis.read(b, offset, b.length-offset)) >= 0) {
+			while (offset < b.length
+					&& (numRead = fis.read(b, offset, b.length - offset)) >= 0) {
 				offset += numRead;
 			}
 			if (offset < b.length) {
 				throw new IOException(f.getName());
 			}
-		} finally{
-			fis.close(); 
+		} finally {
+			fis.close();
 		}
 
 		ARIAEngine instance = new ARIAEngine(256, privateKey);
@@ -132,15 +137,16 @@ public class ARIAUtil {
 		System.arraycopy(b, 0, c, 0, b.length);
 		instance.decrypt(b, c, b.length);
 
-		FileOutputStream fos = new FileOutputStream(dest); 
+		FileOutputStream fos = new FileOutputStream(dest);
 		try {
-			fos.write(c); 
+			fos.write(c);
 		} catch (IOException e) {
 
 		} finally {
 			try {
 				fos.close();
-			} catch (IOException e) {}
+			} catch (IOException e) {
+			}
 		}
 	}
 
@@ -149,29 +155,29 @@ public class ARIAUtil {
 		StringBuffer buf = new StringBuffer();
 		buf.append(str).append(appendStr);
 
-		return buf.substring(0,32);
+		return buf.substring(0, 32);
 	}
 
-
 	/*
-	 *Aria 湲곕낯 蹂듯�명��
+	 * Aria 湲곕낯 蹂듯�명��
 	 */
-	public static String ariaDecrypt(String strHex) 
-	throws InvalidKeyException, UnsupportedEncodingException  {
+	public static String ariaDecrypt(String strHex) throws InvalidKeyException,
+			UnsupportedEncodingException {
 		String originalData = strHex;
-		if (strHex==null || strHex.equals("")) return "";
+		if (strHex == null || strHex.equals(""))
+			return "";
 		StringBuffer buf = null;
 		try {
 			String privateKey = "dkaghghkzl@l";
-			
+
 			byte[] p;
 			byte[] c;
 			ARIAEngine instance = new ARIAEngine(256, privateKey);
-			
+
 			c = hexToByteArray(strHex);
 			p = new byte[c.length];
 			instance.decrypt(c, p, p.length);
-			
+
 			buf = new StringBuffer();
 			buf.append(new String(p));
 			return buf.toString().trim();
@@ -180,12 +186,14 @@ public class ARIAUtil {
 			return originalData;
 		}
 	}
+
 	/*
-	*aria 湲곕낯 ���명��
-	*/
-	public static String ariaEncrypt(String str) 
-	throws InvalidKeyException, UnsupportedEncodingException {
-		if (str==null || str.equals("")) return "";
+	 * aria 湲곕낯 ���명��
+	 */
+	public static String ariaEncrypt(String str) throws InvalidKeyException,
+			UnsupportedEncodingException {
+		if (str == null || str.equals(""))
+			return "";
 		String privateKey = "dkaghghkzl@l";
 
 		byte[] p;
@@ -204,13 +212,14 @@ public class ARIAUtil {
 
 		return byteArrayToHex(c).toUpperCase();
 	}
-	
+
 	/*
-	*罹�由��곗�� 蹂�寃� ���명��
-	*/
-	public static String ariaCharEncrypt(String str, String charset) 
-	throws InvalidKeyException, UnsupportedEncodingException {
-		if (str==null || str.equals("")) return "";
+	 * 罹�由��곗�� 蹂�寃� ���명��
+	 */
+	public static String ariaCharEncrypt(String str, String charset)
+			throws InvalidKeyException, UnsupportedEncodingException {
+		if (str == null || str.equals(""))
+			return "";
 		String privateKey = "dkaghghkzl@l";
 		byte[] p;
 		byte[] c;
@@ -227,17 +236,20 @@ public class ARIAUtil {
 
 		return byteArrayToHex(c).toUpperCase();
 	}
-	
+
 	/*
-	*罹�由��곗�� 蹂�寃� ���명��
-	*(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� : regi)
-	*/
-	public static String ariaCharEncrypt(String str, String charset, String server) 
-	throws InvalidKeyException, UnsupportedEncodingException {
-		if (str==null || str.equals("")) return "";
+	 * 罹�由��곗�� 蹂�寃� ���명��(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� : regi)
+	 */
+	public static String ariaCharEncrypt(String str, String charset,
+			String server) throws InvalidKeyException,
+			UnsupportedEncodingException {
+		if (str == null || str.equals(""))
+			return "";
 		String privateKey = "";
-		if(server.equals("regi")) privateKey = "dkaghghkzl@l";
-		else privateKey = "dkaghghkzl@l";
+		if (server.equals("regi"))
+			privateKey = "dkaghghkzl@l";
+		else
+			privateKey = "dkaghghkzl@l";
 
 		byte[] p;
 		byte[] c;
@@ -255,14 +267,13 @@ public class ARIAUtil {
 		return byteArrayToHex(c).toUpperCase();
 	}
 
-
-
 	/*
-	 *Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��
+	 * Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��
 	 */
-	public static String ariaCharDecrypt(String strHex,  String charset) 
-	throws InvalidKeyException, UnsupportedEncodingException  {
-		if (strHex==null || strHex.equals("")) return "";
+	public static String ariaCharDecrypt(String strHex, String charset)
+			throws InvalidKeyException, UnsupportedEncodingException {
+		if (strHex == null || strHex.equals(""))
+			return "";
 		String privateKey = "dkaghghkzl@l";
 
 		byte[] p;
@@ -274,22 +285,26 @@ public class ARIAUtil {
 		instance.decrypt(c, p, p.length);
 
 		StringBuffer buf = new StringBuffer();
-		buf.append(new String(p,charset));
+		buf.append(new String(p, charset));
 
 		return buf.toString().trim();
 	}
-	
+
 	/*
-	 *Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��
-	 *(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� : regi)
+	 * Aria 罹�由��곗�� 蹂�寃� 蹂듯�명��(��踰������ㅼ�� �대����踰� : read, �깅�愿�由ъ��踰� :
+	 * regi)
 	 */
-	public static String ariaCharDecrypt(String strHex,  String charset, String server) 
-	throws InvalidKeyException, UnsupportedEncodingException  {
-		if (strHex==null || strHex.equals("")) return "";
+	public static String ariaCharDecrypt(String strHex, String charset,
+			String server) throws InvalidKeyException,
+			UnsupportedEncodingException {
+		if (strHex == null || strHex.equals(""))
+			return "";
 		String privateKey = "";
-		if(server.equals("regi")) privateKey = "dkaghghkzl@l";
-		else privateKey = "dkaghghkzl@l";
-		 
+		if (server.equals("regi"))
+			privateKey = "dkaghghkzl@l";
+		else
+			privateKey = "dkaghghkzl@l";
+
 		byte[] p;
 		byte[] c;
 		ARIAEngine instance = new ARIAEngine(256, privateKey);
@@ -299,38 +314,39 @@ public class ARIAUtil {
 		instance.decrypt(c, p, p.length);
 
 		StringBuffer buf = new StringBuffer();
-		buf.append(new String(p,charset));
+		buf.append(new String(p, charset));
 
 		return buf.toString().trim();
 	}
 
-	// hex to byte[] 
-	public static byte[] hexToByteArray(String hex) { 
-		if (hex == null || hex.length() == 0) { 
-			return null; 
-		} 
+	// hex to byte[]
+	public static byte[] hexToByteArray(String hex) {
+		if (hex == null || hex.length() == 0) {
+			return null;
+		}
 
-		byte[] ba = new byte[hex.length() / 2]; 
-		for (int i = 0; i < ba.length; i++) { 
-			ba[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16); 
-		} 
-		return ba; 
-	} 
+		byte[] ba = new byte[hex.length() / 2];
+		for (int i = 0; i < ba.length; i++) {
+			ba[i] = (byte) Integer
+					.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+		}
+		return ba;
+	}
 
-	// byte[] to hex 
-	public static String byteArrayToHex(byte[] ba) { 
-		if (ba == null || ba.length == 0) { 
-			return null; 
-		} 
+	// byte[] to hex
+	public static String byteArrayToHex(byte[] ba) {
+		if (ba == null || ba.length == 0) {
+			return null;
+		}
 
-		StringBuffer sb = new StringBuffer(ba.length * 2); 
-		String hexNumber; 
-		for (int x = 0; x < ba.length; x++) { 
-			hexNumber = "0" + Integer.toHexString(0xff & ba[x]); 
+		StringBuffer sb = new StringBuffer(ba.length * 2);
+		String hexNumber;
+		for (int x = 0; x < ba.length; x++) {
+			hexNumber = "0" + Integer.toHexString(0xff & ba[x]);
 
-			sb.append(hexNumber.substring(hexNumber.length() - 2)); 
-		} 
-		return sb.toString(); 
+			sb.append(hexNumber.substring(hexNumber.length() - 2));
+		}
+		return sb.toString();
 
 	}
 }
