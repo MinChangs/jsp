@@ -65,7 +65,6 @@
     <filter-name>loggingFilter2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>requsetParameterEncodingFilter</filter-name>
     <filter-class>kr.or.ddit.filter.RequsetParameterEncodingFilter</filter-class>
@@ -74,7 +73,6 @@
     <filter-name>requsetParameterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>defaultParamFilter</filter-name>
     <filter-class>kr.or.ddit.filter.DefaultParamFilter</filter-class>
@@ -83,18 +81,13 @@
     <filter-name>defaultParamFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  
-  
-  
   <listener>
     <listener-class>kr.or.ddit.listener.SessionListener</listener-class>
   </listener>
-  
-   <listener>
+  <listener>
     <listener-class>kr.or.ddit.listener.SessionAttrubuteListener</listener-class>
   </listener>
-   <listener>
+  <listener>
     <listener-class>kr.or.ddit.listener.ApplicationListener</listener-class>
   </listener>
 </web-app>

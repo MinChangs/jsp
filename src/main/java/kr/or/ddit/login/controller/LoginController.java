@@ -71,10 +71,10 @@ public class LoginController extends HttpServlet {
 		// /login/login.jsp 위임 --> 서버상 별도의 상태 변경을 가하는 요청이 아니기 때문에 dispatcher방식으로 위임
 		
 		
-		UserVo SESSION_USER = (UserVo)request.getSession().getAttribute("USER_INFO");
+//		UserVo SESSION_USER = (UserVo)request.getSession().getAttribute("USER_INFO");
 		
 		//session에 사용자 정보가 있을경우 --> main화면으로
-		if(SESSION_USER!=null){
+		if(request.getSession().getAttribute("USER_INFO")!=null){
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}else{
 			//session에 사용자 정보가 없을 경우 --> 기존로직
